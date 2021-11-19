@@ -1,35 +1,37 @@
+" Ben's NeoVIM Config
+
+" Plugins
 call plug#begin('~/.config/nvim/plugged')
-Plug 'tpope/vim-surround' " Remove?
 
-" File explorer
-Plug 'kyazdani42/nvim-web-devicons' " for file icons
-Plug 'kyazdani42/nvim-tree.lua'
+	Plug 'tpope/vim-surround' " Remove?
 
-" Status line
-Plug 'nvim-lualine/lualine.nvim'
-" If you want to have icons in your statusline choose one of these
-Plug 'kyazdani42/nvim-web-devicons'
+	" File explorer
+	Plug 'kyazdani42/nvim-web-devicons' " for file icons
+	Plug 'kyazdani42/nvim-tree.lua'
 
-" Buffer line
-Plug 'akinsho/bufferline.nvim'
+	" Status line
+	Plug 'nvim-lualine/lualine.nvim'
+	" If you want to have icons in your statusline choose one of these
+	Plug 'kyazdani42/nvim-web-devicons'
+
+	" Buffer line
+	Plug 'akinsho/bufferline.nvim'
 
 
-" Fuzzy file finder
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+	" Fuzzy file finder
+	Plug 'nvim-lua/plenary.nvim'
+	Plug 'nvim-telescope/telescope.nvim'
 
-"Plug 'bensinc/nord-vim'
+	"Plug 'bensinc/nord-vim'
 
-Plug 'arcticicestudio/nord-vim'
-Plug 'wfxr/minimap.vim'
+	Plug 'arcticicestudio/nord-vim'
+	Plug 'wfxr/minimap.vim'
 
-Plug 'glepnir/dashboard-nvim'
+	Plug 'glepnir/dashboard-nvim'
 
 call plug#end()
 
 " Setup file explorer
-
-
 let g:nvim_tree_gitignore = 1 "0 by default
 let g:nvim_tree_quit_on_open = 1 "0 by default, closes the tree when you open a file
 let g:nvim_tree_indent_markers = 1 "0 by default, this option shows indent markers when folders are open
@@ -111,24 +113,20 @@ nnoremap <S-Tab> :bprev<CR>
 " Close buffers
 nnoremap <C-w> :bdelete<CR>
 
-
-
+" Setup Nord color scheme, but switch to black background
 let g:nord_cursor_line_number_background = 1
 colorscheme nord
 highlight Normal guibg=black
 
 
-" Smart indent on
+" Indenting
 set smartindent
-
 set tabstop=4
 set softtabstop=0 noexpandtab
 set shiftwidth=4
 
 " Show line numbers
 set nu
-
-
 
 set termguicolors " this variable must be enabled for colors to be applied properly
 
@@ -141,8 +139,11 @@ let g:minimap_width = 10
 "let g:minimap_auto_start = 1
 "let g:minimap_auto_start_win_enter = 1
 
+" Toggle minimap
 nnoremap <C-m> :MinimapToggle<CR>
 
+
+" Load Lua configs
 lua require('nvim-tree-config')
 lua require('telescope-config')
 lua require('lualine-config')
